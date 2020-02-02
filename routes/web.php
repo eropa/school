@@ -2,7 +2,9 @@
 
 
 Route::domain('{nameurl}.rybruno.ru')->group(function () {
-    Route::get('/', 'SchoolPageController@index');
+
+    Route::get('/', 'SchoolPageController@index')->name('schoolfront.index');
+    Route::get('/new_{id?}','SchoolPageController@shownew')->name('schoolfront.shownew');
 });
 
 // Главная страница
@@ -60,11 +62,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/grouppage/create','GrouppageController@create')->name('grouppage.create');
         Route::get('/grouppage/{id?}','GrouppageController@edit')->name('grouppage.edit');
 
-
+        /**
+         * Страницы
+         */
         Route::get('/page','PageController@index')->name('page.list');
         Route::get('/page/create','PageController@create')->name('page.create');
         Route::get('/page/{id?}','PageController@edit')->name('page.edit');
 
+        /**
+         * Контакты
+         */
         Route::get('/contactpage','PagecontactController@edit')->name('pagecontact.edit');
     });
 
