@@ -60,6 +60,18 @@
                                href="{{ route('school.list') }}">Школы</a>
                         </div>
                     </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Дневник
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item"
+                                   href="{{route('subjects.list')}}">Предметы
+                                </a>
+
+                            </div>
+                        </li>
                     @endcan
 
                     @can('showManager', \App\User::class)
@@ -74,6 +86,14 @@
                                 <a class="dropdown-item" href="{{route('grouppage.list')}}">Категория страниц</a>
                                 <a class="dropdown-item" href="{{route('page.list') }}">Страницы</a>
                                 <a class="dropdown-item" href="{{route('pagecontact.edit')}}">Страница контакты</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Дневник
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('class.list')}}">Классы</a>
                             </div>
                         </li>
                     @endcan

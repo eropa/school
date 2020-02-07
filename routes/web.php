@@ -73,6 +73,28 @@ Route::middleware(['auth'])->group(function () {
          * Контакты
          */
         Route::get('/contactpage','PagecontactController@edit')->name('pagecontact.edit');
+
+
+        /**
+         * Предметы
+         */
+        Route::get('/subjects','SubjectController@index')->name('subjects.list');
+        Route::get('/subjects/create','SubjectController@create')->name('subjects.create');
+        Route::get('/subjects/{id?}','SubjectController@edit')->name('subjects.edit');
+
+
+        /**
+         * Класс
+         */
+        Route::get('/class','SchoolclassController@index')->name('class.list');
+        Route::get('/class/create','SchoolclassController@create')->name('class.create');
+        Route::get('/class/{id?}','SchoolclassController@edit')->name('class.edit');
+
+
+        Route::get('/pupilclass/{id?}','ClasspupilController@index')->name('pupilclass.list');
+
+     //   Route::get('/subjectteacher/{id?}')
+
     });
 
 });
