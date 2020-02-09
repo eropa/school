@@ -38,11 +38,7 @@
                     </li>
 
                     @can('showTeacher', \App\User::class)
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Успеваемость
-                            </a>
-                        </li>
+
                     @endcan
 
                     @can('showAdmin', \App\User::class)
@@ -104,8 +100,8 @@
                                 Расписание
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Щаблон расписания</a>
-                                <a class="dropdown-item" href="#">Расписание</a>
+                                <a class="dropdown-item" href="{{route('timetable.generate')}}">Генерация</a>
+                                <a class="dropdown-item" href="{{route('timetable.show')}}">Просмотреть</a>
                             </div>
                         </li>
                     @endcan

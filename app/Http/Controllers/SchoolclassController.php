@@ -37,4 +37,10 @@ class SchoolclassController extends Controller
         $data=Schoolclass::find($id);
         return view("back.schoolclass.edit",['data'=>$data]);
     }
+
+
+    public function resultform(){
+        return view("back.schoolclass.resultenter");
+    }
+
 }

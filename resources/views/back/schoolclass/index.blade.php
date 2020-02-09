@@ -18,8 +18,8 @@
                         <th scope="col">id</th>
                         <th scope="col">Класс</th>
                         <th scope="col">Ученики</th>
+                        <th scope="col">Предметы и учителя</th>
                         <th scope="col">Расписание</th>
-                        <th scope="col">Предметы</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,15 +38,16 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="">
+                                    <a href="{{ route('showclass.list',['id'=>$data->id]) }}">
                                         Смотреть
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="">
-                                        Предметы
+                                    <a href="{{ route('timptimetable.list',['id'=>$data->id]) }}">
+                                        Смотреть
                                     </a>
                                 </td>
+
                             </tr>
                         @endforeach
 

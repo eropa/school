@@ -52,8 +52,8 @@
                         <div class="card">
                             <div class="card-header">Главная страница <b>Ученики</b></div>
                             <div class="card-body">
-                                Иванов Иван Иванович (МОУ РРСОШ Школа №6  л/к, класс 1А)<br>
-                                Иванов Антонина Иванович (МОУ РРСОШ Школа №6  л/к, класс 4А)<br>
+                                Иванов Иван Анатольевич (МОУ РРСОШ Школа №6  л/к, класс 11А)
+                                <a href="{{route('parent.parent1')}}">успеваемость</a>
                             </div>
                         </div>
                     </div>
@@ -65,15 +65,12 @@
                         <div class="card">
                             <div class="card-header">Главная страница <b> Учитель</b></div>
                             <div class="card-body">
-                                Расписание сегодня 04/05/2019
-                                <hr>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">1. Труд (МОУ РРСОШ Школа №6  л/к, класс 1А) кабинет 1</li>
-                                    <li class="list-group-item">2. Труд (МОУ РРСОШ Школа №6  л/к, класс 1А) кабинет 1</li>
-                                    <li class="list-group-item">3. Труд (МОУ РРСОШ Школа №6  л/к, класс 1А) кабинет 1</li>
-                                    <li class="list-group-item">5. Труд (МОУ РРСОШ Школа №6  л/к, класс 1А) кабинет 1</li>
-                                </ul>
-
+                                <form method="post" action="{{ route('timetable.teacher') }}">
+                                    Расписание на <input id="date" type="date">
+                                    <hr>
+                                    @csrf
+                                    <button class="btn btn-primary" type="submit">Посмотреть</button>
+                                </form>
                             </div>
                         </div>
                     </div>
