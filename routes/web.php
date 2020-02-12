@@ -29,7 +29,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/{id?}','UserController@edit')->name('user.edit');
         Route::post('/user/{id?}','UserController@update')->name('user.update');
         Route::get('/user/{id?}/delete','UserController@destroy')->name('user.destroy');
-
         /**
          * Школы
          */
@@ -40,26 +39,43 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/school/{id?}','SchoolController@update')->name('school.update');
         Route::get('/school/{id?}/delete','SchoolController@destroy')->name('school.destroy');
 
+        /**
+         * Предметы
+         */
+        Route::get('/subjects','SubjectController@index')->name('subjects.list');
+        Route::get('/subjects/create','SubjectController@create')->name('subjects.create');
+        Route::post('/subjects/create','SubjectController@story')->name('subjects.story');
+        Route::get('/subjects/{id?}','SubjectController@edit')->name('subjects.edit');
+        Route::post('/subjects/{id?}','SubjectController@update')->name('subjects.update');
+        Route::get('/subjects/{id?}/delete','SubjectController@destroy')->name('subjects.destroy');
 
 
         /**
          * Опции сайта
          */
         Route::get('/option','OptionController@index')->name('option.list');
+        Route::post('/option','OptionController@update')->name('option.update');
 
         /**
          * Группа новостей
          */
         Route::get('/groupnew','GroupnewController@index')->name('group.list');
         Route::get('/groupnew/create','GroupnewController@create')->name('group.create');
+        Route::post('/groupnew/create','GroupnewController@story')->name('group.story');
         Route::get('/groupnew/{id?}','GroupnewController@edit')->name('group.edit');
+        Route::post('/groupnew/{id?}','GroupnewController@update')->name('group.update');
+        Route::get('/groupnew/{id?}/delete','GroupnewController@destroy')->name('group.destroy');
+
 
         /**
          * Новости
          */
-        Route::get('/newpost','NewpostController@index')->name('newpos.list');
+        Route::get('/newpost','NewpostController@index1')->name('newpos.list');
         Route::get('/newpost/create','NewpostController@create')->name('newpos.create');
+        Route::post('/newpost/create','NewpostController@story')->name('newpos.story');
         Route::get('/newpost/{id?}','NewpostController@edit')->name('newpos.edit');
+        Route::post('/newpost/{id?}','NewpostController@update')->name('newpos.update');
+        Route::get('/newpost/{id?}/delete','NewpostController@destroy')->name('newpos.destroy');
 
         /**
          * Группа страниц сайта
@@ -81,12 +97,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/contactpage','PagecontactController@edit')->name('pagecontact.edit');
 
 
-        /**
-         * Предметы
-         */
-        Route::get('/subjects','SubjectController@index')->name('subjects.list');
-        Route::get('/subjects/create','SubjectController@create')->name('subjects.create');
-        Route::get('/subjects/{id?}','SubjectController@edit')->name('subjects.edit');
+
 
 
         /**

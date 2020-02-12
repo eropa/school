@@ -32,15 +32,15 @@
                         <div class="card">
                             <div class="card-header">Главная страница <b>САЙТ</b></div>
                             <div class="card-body">
-                                <a href="http://{{ getSite() }}.rybruno.ru:8000" target="_blank">
+                                <a href="http://{{ getSite().env('SCHOOLDOMEN','.rybruno.ru:8000') }}" target="_blank">
                                     {{ getSite() }}
                                 </a>
 
                                 <hr>
-                                Кол-во групп новостей - <b>12</b><br>
-                                Кол-во новостей - <b>3</b><br>
-                                Кол-во групп страниц - <b>3</b><br>
-                                Кол-во страниц - <b>10</b><br>
+                                Кол-во групп новостей - <b>{{getCountGroupNewSait()}}</b><br>
+                                Кол-во новостей - <b>{{ getCountNewSait() }}</b><br>
+                                Кол-во групп страниц - <b>{{ getCountGroupPageSait() }}</b><br>
+                                Кол-во страниц - <b>{{getCountPageSait()}}</b><br>
                             </div>
                         </div>
                     </div>

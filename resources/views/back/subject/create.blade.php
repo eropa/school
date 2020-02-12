@@ -16,14 +16,17 @@
                Создать предмет
             </div>
             <div class="card-body">
-                <form>
+                <form method="post" action="{{ route('subjects.story') }}">
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
+                                name="name"
+                               required
                                class="form-control">
                     </div>
 
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Создать
                     </button>

@@ -12,12 +12,18 @@
             </div>
             <div class="card-body">
 
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
                 <table class="table table-hover" id="dataTable">
                     <thead>
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">Название</th>
-                        <th scope="col">Название группы</th>
+                        <th scope="col">Группа</th>
                         <th scope="col">Дата публикации</th>
                     </tr>
                     </thead>
@@ -28,6 +34,10 @@
                                 <td>
                                     <a href="{{route('newpos.edit',['id'=>$new->id])}}">
                                         {{$new->name}}
+                                    </a>
+
+                                    <a href="{{ route('newpos.destroy',['id'=>$new->id]) }}">
+                                        <i class="fa fa-close"></i>
                                     </a>
                                    </td>
                                 <td>{{$new->group->name}}</td>

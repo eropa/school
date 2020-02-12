@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('subjects.list') }}">Предметы</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Создать</li>
+                <li class="breadcrumb-item active" aria-current="page">Редактировать</li>
             </ol>
         </nav>
 
@@ -16,15 +16,17 @@
                Редактировать предмет
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('subjects.update',['id'=>$data->id]) }}" method="post">
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
                                value="{{$data->name}}"
+                               name="name"
+                               required
                                class="form-control">
                     </div>
-
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Создать
                     </button>

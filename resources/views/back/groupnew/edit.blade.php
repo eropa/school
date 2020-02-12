@@ -16,16 +16,15 @@
                Редактировать группу
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('group.update',['id'=>$data->id]) }}" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
+                               name="name"
                                value="{{$data->name}}"
                                class="form-control">
                     </div>
-
-
-
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Сохранить
                     </button>

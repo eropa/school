@@ -12,6 +12,11 @@
             </div>
             <div class="card-body">
 
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <table class="table table-hover" id="dataTable">
                     <thead>
                         <tr>
@@ -29,7 +34,10 @@
                                 <a href="{{ route('subjects.edit',['id'=>$data->id]) }}">
                                     {{$data->name}}
                                 </a>
-                                <i class="fa fa-close"></i></td>
+                                <a href="{{route('subjects.destroy',['id'=>$data->id])}}">
+                                    <i class="fa fa-close"></i>
+                                </a>
+                            </td>
                             </td>
                         </tr>
                     @endforeach

@@ -33,6 +33,20 @@
     }
 
     /**
+     * Обновляем параметры сайта
+     * @param $name
+     * @param $value
+     */
+    function setOption($name,$value){
+        $siteID=\Illuminate\Support\Facades\Auth::user()->school->school_id;
+        $model=new \App\Models\Option();
+        $model->name=$name;
+        $model->value=$value;
+        $model->school_id=$siteID;
+        $model->save();
+    }
+
+    /**
      * Получаем опции сайта по id школе
      * @param $siteID
      * @return mixed
@@ -71,9 +85,66 @@
         return \App\User::Where('role',$role)->count();
     }
 
+    /**
+     * Кол-во учеников БД
+     * @return int
+     */
     function getCountPupil(){
         return \App\Models\Pupil::all()->count();
     }
+
+    /**
+     * Кол-во групп новостей
+     * @param $idsait
+     * @return mixed
+     */
+    function getCountGroupNewSait(){
+        $userid=\Illuminate\Support\Facades\Auth::user()->id;
+        $data=\App\Models\UserSchool::where('user_id',$userid)->first();
+        $idsait=$data->school_id;
+        return \App\Models\Groupnew::Where('school_id',$idsait)->count();
+    }
+
+    /**
+     * Количество новостей
+     * @return int
+     */
+    function getCountNewSait(){
+        $userid=\Illuminate\Support\Facades\Auth::user()->id;
+        $data=\App\Models\UserSchool::where('user_id',$userid)->first();
+        $idsait=$data->school_id;
+        $datas= \App\Models\Groupnew::Where('school_id',$idsait)->get();
+        $i=0;
+        foreach ($datas as $data){
+            $i+=\App\Models\Newpost::where('groupnew_id',$data->id)->count();
+        }
+        return $i;
+    }
+
+    /**
+     * Кол-во групп
+     * @return mixed
+     */
+    function getCountGroupPageSait(){
+        $userid=\Illuminate\Support\Facades\Auth::user()->id;
+        $data=\App\Models\UserSchool::where('user_id',$userid)->first();
+        $idsait=$data->school_id;
+        return \App\Models\Grouppage::Where('school_id',$idsait)->count();
+    }
+
+
+    function getCountPageSait(){
+        $userid=\Illuminate\Support\Facades\Auth::user()->id;
+        $data=\App\Models\UserSchool::where('user_id',$userid)->first();
+        $idsait=$data->school_id;
+        $datas= \App\Models\Grouppage::Where('school_id',$idsait)->get();
+        $i=0;
+        foreach ($datas as $data){
+            $i+=\App\Models\Page::where('grouppage_id',$data->id)->count();
+        }
+        return $i;
+    }
+
 
 
 
