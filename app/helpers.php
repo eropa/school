@@ -46,5 +46,34 @@
         return $arraOption["option"];
     }
 
+    /**
+     * Количество школ
+     * @return int
+     */
+    function getCountSchool(){
+        return \App\Models\School::all()->count();
+    }
+
+    /**
+     * Получаем кол-во пользователей
+     * @return int
+     */
+    function getCountUser(){
+        return \App\User::all()->count();
+    }
+
+    /**
+     * Кол-во пользователей определеной роли
+     * @param $role
+     * @return mixed
+     */
+    function getCountRole($role){
+        return \App\User::Where('role',$role)->count();
+    }
+
+    function getCountPupil(){
+        return \App\Models\Pupil::all()->count();
+    }
+
 
 

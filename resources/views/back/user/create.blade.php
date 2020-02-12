@@ -16,37 +16,43 @@
                 Создать пользователя
             </div>
             <div class="card-body">
-                <form>
+                <form action="" method="post">
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ф.И.О.</label>
                         <input type="text"
-                               class="form-control">
+                               name="name"
+                               class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
                         <input type="email"
-                               class="form-control"
-                               id="exampleInputEmail1"
-                               aria-describedby="emailHelp">
+                               name="email"
+                               class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Пароль</label>
+                        <input type="password"
+                               name="password"
+                               class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Роль</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select class="form-control" name="role" required>
                             <option value="" selected>Выберите роль</option>
-                            <option>Администратор</option>
-                            <option>Менеджер</option>
-                            <option>Учитель</option>
-                            <option>Родитель</option>
+                            <option value="admin">Администратор</option>
+                            <option value="meneger">Менеджер</option>
+                            <option value="teacher">Учитель</option>
+                            <option value="parent">Родитель</option>
                         </select>
                     </div>
-
-
                     <button type="submit" class="btn btn-primary">
                         Создать
                     </button>
+                    @csrf
                 </form>
             </div>
         </div>

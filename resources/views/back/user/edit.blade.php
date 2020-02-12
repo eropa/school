@@ -16,11 +16,13 @@
                 Редактировать пользователя
             </div>
             <div class="card-body">
-                <form>
+                <form method="post" action="{{route('user.update',['id'=>$data->id])}}">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ф.И.О.</label>
                         <input type="text"
                                value="{{$data->name}}"
+                               name="name"
+                               required
                                class="form-control">
                     </div>
                     <div class="form-group">
@@ -33,40 +35,44 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Роль</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option
+                        <select class="form-control" name="role" >
+                            <option value="admin"
                                     @if($data->role=="admin")
                                      selected
                                     @endif>
                                 Администратор
                             </option>
 
-                            <option
+                            <option value="meneger"
                                     @if($data->role=="meneger")
                                     selected
                                     @endif>Менеджер</option>
 
-                            <option
+                            <option value="teacher"
                                     @if($data->role=="teacher")
                                     selected
                                     @endif>Учитель</option>
 
-                            <option
+                            <option value="parent"
                                     @if($data->role=="parent")
                                     selected
                                     @endif>Родитель</option>
                         </select>
                     </div>
+                    <input type="hidden" value="1" name="typeupdate">
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Сохранить
                     </button>
                 </form>
                 <hr>
-                <form>
+                <form method="post" action="{{route('user.update',['id'=>$data->id])}}">
                     <div class="form-group">
                         <label for="exampleInputPassword1">Новый пароль</label>
-                        <input type="password" class="form-control">
+                        <input type="password" name="password" class="form-control">
                     </div>
+                    <input type="hidden" value="2" name="typeupdate">
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Сохранить новый пароль
                     </button>

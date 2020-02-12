@@ -12,6 +12,12 @@
             </div>
             <div class="card-body">
 
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
                 <table class="table table-hover" id="dataTable">
                     <thead>
                     <tr>
@@ -28,10 +34,28 @@
                                 <td>
                                     <a href="{{route('user.edit',['id'=>$dataUser->id])}}">
                                         {{$dataUser->name}}
-                                    </a><i class="fa fa-close"></i>
+                                    </a>
+
+                                    <a href="{{ route('user.destroy',['id'=>$dataUser->id]) }}">
+                                        <i class="fa fa-close"></i>
+                                    </a>
                                   </td>
                                 <td>{{$dataUser->email}}</td>
-                                <td>{{$dataUser->role}}</td>
+                                <td>
+
+                                    @if($dataUser->role=='admin')
+                                        Администратор ИС
+                                    @endif
+                                    @if($dataUser->role=='meneger')
+                                        Менеджер сайт
+                                    @endif
+                                    @if($dataUser->role=='teacher')
+                                        Учитель
+                                    @endif
+                                    @if($dataUser->role=='parent')
+                                        Родитель
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

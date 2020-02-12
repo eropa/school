@@ -16,10 +16,11 @@
                Редактировать школу
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('school.update',['id'=>$data->id]) }}" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
+                               name="name"
                                value="{{$data->name}}"
                                class="form-control">
                     </div>
@@ -27,6 +28,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Полное название</label>
                         <input type="text"
+                               name="fullname"
                                value="{{$data->fullname}}"
                                class="form-control">
                     </div>
@@ -34,6 +36,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Описание</label>
                         <input type="text"
+                               name="about"
                                value="{{$data->about}}"
                                class="form-control">
                     </div>
@@ -42,12 +45,13 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Субдомен</label>
                         <input type="text"
+                               name="url"
                                value="{{$data->url}}"
                                class="form-control">
                     </div>
 
 
-
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Сохранить
                     </button>

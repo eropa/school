@@ -8,9 +8,7 @@ Route::domain('{nameurl}.rybruno.ru')->group(function () {
 });
 
 // Главная страница
-Route::get('/', function () {
-    return view('back.index');
-});
+Route::get('/','PageController@main');
 
 
 
@@ -27,14 +25,22 @@ Route::middleware(['auth'])->group(function () {
          */
         Route::get('/user','UserController@ListUser')->name('user.list');
         Route::get('/user/create','UserController@create')->name('user.create');
+        Route::post('/user/create','UserController@story')->name('user.createpost');
         Route::get('/user/{id?}','UserController@edit')->name('user.edit');
+        Route::post('/user/{id?}','UserController@update')->name('user.update');
+        Route::get('/user/{id?}/delete','UserController@destroy')->name('user.destroy');
 
         /**
          * Школы
          */
         Route::get('/school','SchoolController@index')->name('school.list');
         Route::get('/school/create','SchoolController@create')->name('school.create');
+        Route::post('/school/create','SchoolController@story')->name('school.story');
         Route::get('/school/{id?}','SchoolController@edit')->name('school.edit');
+        Route::post('/school/{id?}','SchoolController@update')->name('school.update');
+        Route::get('/school/{id?}/delete','SchoolController@destroy')->name('school.destroy');
+
+
 
         /**
          * Опции сайта

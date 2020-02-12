@@ -10,6 +10,15 @@ class PageController extends Controller
 {
 
     /**
+     * Главная страница
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function main(){
+        return view('index');
+    }
+
+
+    /**
      * Список новостей
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

@@ -8,16 +8,16 @@
                         <div class="card">
                             <div class="card-header">Главная страница <b>Статистика</b></div>
                             <div class="card-body">
-                                Всего школ : <b>2</b>
+                                Всего школ : <b>{{ getCountSchool() }}</b>
                                 <br>
-                                Всего пользователей : <b>25</b>
+                                Всего пользователей : <b>{{getCountUser()}}</b>
                                 <hr>
-                                Администратор: <b>1</b>
-                                Менеджеров: <b>2</b><br>
-                                Учителей: <b>2</b><br>
-                                Родителей: <b>20</b><br>
+                                Администратор: <b>{{getCountRole('admin')}}</b><br>
+                                Менеджеров: <b>{{getCountRole('meneger')}}</b><br>
+                                Учителей: <b>{{getCountRole('teacher')}}</b><br>
+                                Родителей: <b>{{getCountRole('parent')}}</b><br>
                                 <hr>
-                                Учеников: <b>20</b><br>
+                                Учеников: <b>{{getCountPupil()}}</b><br>
 
                             </div>
                         </div>

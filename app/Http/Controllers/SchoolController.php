@@ -35,4 +35,43 @@ class SchoolController extends Controller
         return view('back.school.create');
     }
 
+
+    /**
+     * Добавление записи
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function story(Request $request){
+
+        $model=new School();
+        $model->name=$request->input('name');
+        $model->fullname=$request->input('fullname');
+        $model->about=$request->input('about');
+        $model->url=$request->input('url');
+        $model->save();
+
+        return redirect()->route('school.list')->with('status', 'Создана запись!');;
+    }
+
+
+    /**
+     * ЗАпись удалена
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public  function destroy($id){
+        School::destroy($id);
+        return redirect()->route('school.list')->with('status', 'Запись удалена!');;
+    }
+
+
+    public function update(Request $request,$id){
+        $model=School::find($id);
+        $model->name=$request->input('name');
+        $model->fullname=$request->input('fullname');
+        $model->about=$request->input('about');
+        $model->url=$request->input('url');
+        $model->save();
+        return redirect()->route('school.list')->with('status', 'Запись обновлена!');;
+    }
 }

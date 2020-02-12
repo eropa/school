@@ -11,6 +11,11 @@
                 </a>
             </div>
             <div class="card-body">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
                 <table class="table table-hover" id="dataTable">
                     <thead>
@@ -28,11 +33,17 @@
                                 <a href="{{ route('school.edit',['id'=>$data->id]) }}">
                                     {{ $data->name }}
                                 </a>
-                                <i class="fa fa-close"></i></td>
+                                <a href="{{ route('school.destroy',['id'=>$data->id]) }}">
+                                    <i class="fa fa-close"></i>
+                                </a>
+                            </td>
+
+
+
 
                             <td>
                                 <a target="_blank"
-                                    href="http://{{ $data->url.".rybruno.ru" }}:8000">
+                                    href="http://{{ $data->url.env('SCHOOLDOMEN','.rybruno.ru:8000') }}">
                                     {{ $data->url }}
                                 </a>
                             </td>
