@@ -6,6 +6,7 @@ use App\Models\Classpupil;
 use App\Models\Portfolio;
 use App\Models\Pupil;
 use App\Models\Teachersubjectclass;
+use App\Models\Timetable;
 use Illuminate\Http\Request;
 
 class PupilController extends Controller
@@ -18,7 +19,12 @@ class PupilController extends Controller
         $classID=Classpupil::where('pupil_id',$id)->first();
         $data=Teachersubjectclass::where('schoolclass_id',$classID->schoolclass_id)->get();
         //return $data;
-        return view('back.pupil.parent2',['data'=>$data]);
+        return view('back.pupil.parent2',['data'=>$data,'id'=>$id]);
+    }
+
+    public function parent3($id,$idrecord){
+        $datas=Timetable::where('teachersubjectclass_id',$idrecord)->orderby('datelesson', 'desc')->get();
+        return view('back.pupil.parent3',['datas'=>$datas,'id'=>$id,'idrecord'=>$idrecord]);
     }
 
     public function showpupil($id){

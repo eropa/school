@@ -157,7 +157,7 @@ Route::middleware(['auth'])->group(function () {
          */
         Route::get('/parent','PupilController@parent1')->name('parent.index');
         Route::get('/parent/{id?}','PupilController@parent2')->name('parent.listsubject');
-        Route::post('/parent/{id?}/{idrecord?}','PupilController@parent2')->name('parent.resultsubject');
+        Route::get('/parent/{id?}/{idrecord?}','PupilController@parent3')->name('parent.result');
 
 
 

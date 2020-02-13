@@ -23,7 +23,7 @@
                                     {{$item->subject->name}}
                                 </td>
                                 <td>
-                                    <a href="">
+                                    <a href="{{ route('parent.result',['id'=>$id,'idrecord'=>$item->id]) }}">
                                         смотреть
                                     </a>
                                 </td>
