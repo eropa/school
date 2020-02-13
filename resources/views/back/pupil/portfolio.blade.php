@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('class.list') }}">Классы</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Ученик грамоты</li>
+                <li class="breadcrumb-item active" aria-current="page">Портфолио ученика</li>
             </ol>
         </nav>
 

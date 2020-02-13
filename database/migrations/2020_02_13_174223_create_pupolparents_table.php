@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResultsTable extends Migration
+class CreatePupolparentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateResultsTable extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('pupolparents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('result');
             $table->unsignedBigInteger('pupil_id');
             $table->foreign('pupil_id')->references('id')->on('pupils');
-            $table->unsignedBigInteger('timetable_id');
-            $table->foreign('timetable_id')->references('id')->on('timetables');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateResultsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('pupolparents');
     }
 }

@@ -13,7 +13,7 @@
 
         <div class="card">
             <div class="card-header">
-                Список учителей
+                Список учителей ({{$class->name}})
             </div>
             <div class="card-body">
                 <a class="btn btn-primary" href="{{ route('showclass.addteacjer',['id'=>$id]) }}" role="button">Добавить</a>
@@ -23,6 +23,7 @@
                         <th scope="col">id</th>
                         <th scope="col">Учитель</th>
                         <th scope="col">Предмет</th>
+                        <th scope="col">Удалить</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,6 +32,10 @@
                             <th scope="row">{{$data->id}}</th>
                             <td>{{$data->user->name}}</td>
                             <td>{{$data->subject->name}}</td>
+                            <td><a href="{{ route('showclass.destroy',['id'=>$data->id]) }}" >
+                                    удалить
+                                </a>
+                            </td>
                         </tr>
 
                     @endforeach

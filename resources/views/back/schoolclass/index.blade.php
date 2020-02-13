@@ -23,7 +23,6 @@
                         <th scope="col">Класс</th>
                         <th scope="col">Ученики</th>
                         <th scope="col">Предметы и учителя</th>
-                        <th scope="col">Расписание</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,12 +45,6 @@
                                         Смотреть
                                     </a>
                                 </td>
-                                <td>
-                                    <a href="{{ route('timptimetable.list',['id'=>$data->id]) }}">
-                                        Смотреть
-                                    </a>
-                                </td>
-
                             </tr>
                         @endforeach
 

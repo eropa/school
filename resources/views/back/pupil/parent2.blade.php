@@ -12,21 +12,23 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Дата</th>
-                        <th scope="col">Результат</th>
+                        <th scope="col">Предметы</th>
+                        <th scope="col">действие</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>27/01/2020</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>31/01/2020</td>
-                        <td>-</td>
-                    </tr>
-
-
+                        @foreach($data as $item)
+                            <tr>
+                                <td>
+                                    {{$item->subject->name}}
+                                </td>
+                                <td>
+                                    <a href="">
+                                        смотреть
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

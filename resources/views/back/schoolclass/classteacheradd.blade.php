@@ -19,7 +19,7 @@
                 Форма добавления
             </div>
             <div class="card-body">
-                <form>
+                <form method="post" action="{{ route('showclass.addteacjerpost',['id'=>$id]) }}">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Класс</label>
                         <input class="form-control"
@@ -29,8 +29,10 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Предмет</label>
-                        <select class="selectpicker" data-live-search="true" data-size="5">
-                            <option value="0" selected disabled>Выберите предмет</option>
+                        <select class="selectpicker" data-live-search="true" name="subject_id" data-size="5">
+                            <option value="0"
+
+                                    selected disabled>Выберите предмет</option>
                             @foreach($datasubject as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach
@@ -38,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Учитель</label>
-                        <select class="selectpicker" data-live-search="true" data-size="5">
+                        <select class="selectpicker" data-live-search="true" name="user_id" data-size="5">
                             <option value="0" selected disabled>Выберите учителя</option>
                             @foreach($datauser as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>

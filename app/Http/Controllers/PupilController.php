@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classpupil;
 use App\Models\Portfolio;
 use App\Models\Pupil;
+use App\Models\Teachersubjectclass;
 use Illuminate\Http\Request;
 
 class PupilController extends Controller
@@ -12,8 +14,11 @@ class PupilController extends Controller
         return view('back.pupil.parent1');
     }
 
-    public function parent2(){
-        return view('back.pupil.parent2');
+    public function parent2($id){
+        $classID=Classpupil::where('pupil_id',$id)->first();
+        $data=Teachersubjectclass::where('schoolclass_id',$classID->schoolclass_id)->get();
+        //return $data;
+        return view('back.pupil.parent2',['data'=>$data]);
     }
 
     public function showpupil($id){

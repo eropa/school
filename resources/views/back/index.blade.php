@@ -52,8 +52,21 @@
                         <div class="card">
                             <div class="card-header">Главная страница <b>Ученики</b></div>
                             <div class="card-body">
-                                Иванов Иван Анатольевич (МОУ РРСОШ Школа №6  л/к, класс 11А)
-                                <a href="{{route('parent.parent1')}}">успеваемость</a>
+                                <?php
+                                    $datap=\App\Models\Pupolparent::
+                                        where('user_id',\Illuminate\Support\Facades\Auth::user()->id)
+                                        ->get();
+                                ?>
+                                @foreach($datap as $item)
+                                        <?php
+                                            $p=\App\Models\Pupil::find($item->pupil_id)->first();
+                                            $clas=\App\Models\Classpupil::where('pupil_id',$p->id)->first();
+                                            $clasinfo=\App\Models\Schoolclass::find($clas->schoolclass_id);
+                                        ?>
+                                            {{$p->name}}( {{$clasinfo->name}})
+                                        <a href="{{route('parent.listsubject',['id' => $item->pupil_id])}}">успеваемость</a> <hr>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -65,12 +78,37 @@
                         <div class="card">
                             <div class="card-header">Главная страница <b> Учитель</b></div>
                             <div class="card-body">
-                                <form method="post" action="{{ route('timetable.teacher') }}">
-                                    Расписание на <input id="date" type="date">
-                                    <hr>
-                                    @csrf
-                                    <button class="btn btn-primary" type="submit">Посмотреть</button>
-                                </form>
+                                Закрепленные дисциплины
+                                <hr>
+                                <table class="table table-hover" id="dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">Класс</th>
+                                        <th scope="col">Предмет</th>
+                                        <th scope="col">Успеваемость</th>
+                                    </tr>
+                                    </thead>
+                                    <?php
+                                        $user=\Illuminate\Support\Facades\Auth::user();
+                                        $datas=\App\Models\Teachersubjectclass::where('user_id',$user->id)->get();
+                                    ?>
+                                    <tbody>
+                                        @foreach($datas as $data)
+                                            <tr>
+                                                <td>{{$data->id}}</td>
+                                                <td>{{$data->school->name}}</td>
+                                                <td>{{$data->subject->name}}</td>
+                                                <td>
+                                                    <a href="{{ route('timetable.listdata',['id'=>$data->id]) }}">
+                                                        Просмотреть
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -13,7 +13,7 @@
 
         <div class="card">
             <div class="card-header">
-                Щаблон расписания
+                Шаблон расписания
             </div>
             <div class="card-body">
                 Понедельник

@@ -134,33 +134,32 @@ Route::middleware(['auth'])->group(function () {
          * Учителя и закрепления
          */
         Route::get('/subjectteacher/{id?}','TeachersubjectclassController@showclass')->name('showclass.list');
+        Route::get('/subjectteacher/{id?}/delete','TeachersubjectclassController@destroy')->name('showclass.destroy');
         Route::get('/subjectteacher/{id?}/add','TeachersubjectclassController@showclassadd')->name('showclass.addteacjer');
+        Route::post('/subjectteacher/{id?}/add','TeachersubjectclassController@story')->name('showclass.addteacjerpost');
 
 
-        /**
-         * Шаблон расписания
-         */
-        Route::get('/temptimetable/{id?}','TimptimetableController@index')->name('timptimetable.list');
-        Route::get('/temptimetable/{id?}/{n?}/edit','TimptimetableController@edit')->name('timptimetable.edit');
 
-        /**
-         * Расписание
-         */
-        Route::get('/timetable/generate','TimetableController@generate')->name('timetable.generate');
-        Route::get('/timetable/show','TimetableController@show')->name('timetable.show');
-        Route::post('/timetable/show','TimetableController@showpost')->name('timetable.show');
+        // Route::get('/temptimetable/{id?}','TimptimetableController@index')->name('timptimetable.list');
+        // Route::get('/temptimetable/{id?}/{n?}/edit','TimptimetableController@edit')->name('timptimetable.edit');
 
-        /**
-         * Учитель
-         */
-        Route::post('/timetable/teacher','TimetableController@teacher')->name('timetable.teacher');
-        Route::get('/timetable/teacher/result','SchoolclassController@resultform')->name('timetable.result');
+        // Route::get('/timetable/generate','TimetableController@generate')->name('timetable.generate');
+        // Route::get('/timetable/show','TimetableController@show')->name('timetable.show');
+        // Route::post('/timetable/show','TimetableController@showpost')->name('timetable.show');
+
+        // Route::post('/timetable/teacher','TimetableController@teacher')->name('timetable.teacher');
+        Route::get('/timetable/teacher/{id?}','TimetableController@listdata')->name('timetable.listdata');
+        Route::post('/timetable/teacher/{id?}/add','TimetableController@listdatapost')->name('timetable.adddate');
+        Route::post('/timetable/teacher/{id?}/result','TimetableController@setResult')->name('timetable.setResult');
 
         /**
          * Родитель успеваемость
          */
-        Route::get('/parent','PupilController@parent1')->name('parent.parent1');
-        Route::post('/parent','PupilController@parent2')->name('parent.parent2');
+        Route::get('/parent','PupilController@parent1')->name('parent.index');
+        Route::get('/parent/{id?}','PupilController@parent2')->name('parent.listsubject');
+        Route::post('/parent/{id?}/{idrecord?}','PupilController@parent2')->name('parent.resultsubject');
+
+
 
     });
 
