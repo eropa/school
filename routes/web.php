@@ -82,14 +82,20 @@ Route::middleware(['auth'])->group(function () {
          */
         Route::get('/grouppage','GrouppageController@index')->name('grouppage.list');
         Route::get('/grouppage/create','GrouppageController@create')->name('grouppage.create');
+        Route::post('/grouppage/create','GrouppageController@story')->name('grouppage.story');
         Route::get('/grouppage/{id?}','GrouppageController@edit')->name('grouppage.edit');
+        Route::post('/grouppage/{id?}','GrouppageController@update')->name('grouppage.update');
+        Route::get('/grouppage/{id?}/delete','GrouppageController@destroy')->name('grouppage.destroy');
 
         /**
          * Страницы
          */
         Route::get('/page','PageController@index')->name('page.list');
         Route::get('/page/create','PageController@create')->name('page.create');
+        Route::post('/page/create','PageController@story')->name('page.story');
         Route::get('/page/{id?}','PageController@edit')->name('page.edit');
+        Route::post('/page/{id?}','PageController@update')->name('page.update');
+        Route::get('/page/{id?}/delete','PageController@destroy')->name('page.destroy');
 
         /**
          * Контакты

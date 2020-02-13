@@ -16,10 +16,11 @@
                Группу страниц
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('grouppage.story') }}" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
+                               name="name"
                                class="form-control">
                     </div>
 
@@ -32,10 +33,10 @@
                     </div>
 
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <input type="checkbox" class="form-check-input" name="menu" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">В меню</label>
                     </div>
-
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Создать
                     </button>

@@ -16,10 +16,11 @@
                Страница
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('page.update',['id'=>$data->id]) }}" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
+                               name="name"
                                value="{{$data->name}}"
                                class="form-control">
                     </div>
@@ -35,16 +36,20 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Выберите группу</label>
-                        <select class="selectpicker" data-live-search="true" data-size="5">
+                        <select class="selectpicker" data-live-search="true" name="grouppage_id" data-size="5">
                             @foreach($grouppage as $item)
-                                <option value="0" selected >{{$item->name}}</option>
+                                <option value="{{$item->id}}"
+                                        @if($item->id==$data->grouppage_id)
+                                            selected
+                                        @endif
+                                         >{{$item->name}}</option>
                             @endforeach
                         </select>
                     </div>
 
-
+                    @csrf
                     <button type="submit" class="btn btn-primary">
-                        Создать
+                        Сохранить
                     </button>
                 </form>
             </div>

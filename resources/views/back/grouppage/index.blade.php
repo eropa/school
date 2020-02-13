@@ -11,7 +11,11 @@
                 </a>
             </div>
             <div class="card-body">
-
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <table class="table table-hover" id="dataTable">
                     <thead>
                     <tr>
@@ -27,6 +31,9 @@
                                 <td>
                                     <a href="{{route('grouppage.edit',['id'=>$data->id])}}">
                                         {{$data->name }}
+                                    </a>
+                                    <a href="{{ route('grouppage.destroy',['id'=>$data->id]) }}">
+                                        <i class="fa fa-close"></i>
                                     </a>
                                 </td>
                                 <td>

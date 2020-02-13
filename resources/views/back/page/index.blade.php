@@ -11,14 +11,17 @@
                 </a>
             </div>
             <div class="card-body">
-
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <table class="table table-hover" id="dataTable">
                     <thead>
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">Название</th>
-                        <th scope="col">Название группы</th>
-                        <th scope="col">Перейти на страницу</th>
+                        <th scope="col">Группа</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,11 +32,11 @@
                                 <a href="{{ route('page.edit',['id'=> $data->id ]) }}">
                                     {{ $data->name }}
                                 </a>
+                                <a href="{{ route('page.destroy',['id'=>$data->id]) }}">
+                                    <i class="fa fa-close"></i>
+                                </a>
                             </td>
                             <td>{{ $data->group->name }}</td>
-                            <td>
-                                <a href="#">url</a>
-                            </td>
                         </tr>
                     @endforeach
 

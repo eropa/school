@@ -16,10 +16,11 @@
                Группу страниц
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('grouppage.update',['id'=>$data->id]) }}" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
+                               name="name"
                                value="{{$data->name}}"
                                class="form-control">
                     </div>
@@ -37,11 +38,11 @@
                     </div>
 
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input"
+                        <input type="checkbox" class="form-check-input" name="menu"
                                @if($data->menu) checked @endif id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">В меню</label>
                     </div>
-
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Создать
                     </button>

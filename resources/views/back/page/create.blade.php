@@ -16,10 +16,11 @@
                Страница
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{route('page.story')}}" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
+                               name="name"
                                class="form-control">
                     </div>
 
@@ -32,13 +33,15 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Выберите группу</label>
-                        <select class="selectpicker" data-live-search="true" data-size="5">
+                        <select class="selectpicker" data-live-search="true" name="grouppage_id" data-size="5">
                             <option value="0" selected disabled>Выберите группу</option>
-
+                            @foreach($grouppage as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
                         </select>
                     </div>
 
-
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Создать
                     </button>
