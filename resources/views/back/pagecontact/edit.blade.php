@@ -14,11 +14,11 @@
                Редактировать
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('pagecontact.update') }}" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Текст страницы</label>
                         <textarea name="editor1">
-
+                            {!! $data->texthtml !!}
                         </textarea>
                         <script>
                             CKEDITOR.replace( 'editor1' );
@@ -26,9 +26,7 @@
                     </div>
 
 
-
-
-
+                    @csrf
                     <button type="submit" class="btn btn-primary">
                         Сохранить
                     </button>

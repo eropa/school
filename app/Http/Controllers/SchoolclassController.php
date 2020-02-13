@@ -43,4 +43,32 @@ class SchoolclassController extends Controller
         return view("back.schoolclass.resultenter");
     }
 
+    /**
+     * Новый класс
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function story(Request $request){
+        $idSchool=Auth::user()->school->school_id;
+        $model=new Schoolclass();
+        $model->name=$request->input('name');
+        $model->school_id=$idSchool;
+        $model->save();
+        return redirect()->route('class.list');
+    }
+
+
+    /***
+     * Обновляем название
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request,$id){
+        $model=Schoolclass::find($id);
+        $model->name=$request->input('name');
+        $model->save();
+        return redirect()->route('class.list');
+    }
+
 }

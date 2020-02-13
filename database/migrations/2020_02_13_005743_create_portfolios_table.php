@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagecontactsTable extends Migration
+class CreatePortfoliosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePagecontactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pagecontacts', function (Blueprint $table) {
+        Schema::create('portfolios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('texthtml');
-            $table->unsignedBigInteger('school_id');
-            $table->foreign('school_id')->references('id')->on('schools');
+            $table->string('name');
+            $table->string('foto');
+            $table->unsignedBigInteger('pupil_id');
+            $table->foreign('pupil_id')->references('id')->on('pupils');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePagecontactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagecontacts');
+        Schema::dropIfExists('portfolios');
     }
 }

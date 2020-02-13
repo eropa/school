@@ -16,9 +16,37 @@
                 Список учеников
             </div>
             <div class="card-body">
-                @foreach($datas as $data)
-                    {{$data->id}} - {{$data->pupil->name}} <br>
-                @endforeach
+
+
+                    <table class="table table-hover" id="dataTable">
+                        <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Ученик</th>
+                            <th scope="col">портфолио</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($datas as $data)
+                            <tr>
+                                <td>
+                                    {{$data->id}}
+                                </td>
+                                <td>
+                                    {{$data->pupil->name}}
+                                </td>
+                                <td>
+                                    <a href="{{ route('pupil.show',['id'=> $data->id]) }}" target="_blank">
+                                        смотреть
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+
+
+
+                        </tbody>
+
             </div>
         </div>
     </div>

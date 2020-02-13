@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classpupil;
+use App\Models\Pupil;
+use App\Models\Schoolclass;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClasspupilController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Список учеников класса
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index($id)
     {
@@ -19,69 +23,28 @@ class ClasspupilController extends Controller
         return view('back.pupil.class',['datas'=>$datas]);
     }
 
+
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Форма добавления нового ученика
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        $idSchool=Auth::user()->school->school_id;
+        $datas=Schoolclass::where('school_id',$idSchool)->get();
+        return view('back.pupil.create',['datas'=>$datas]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function story(Request $request){
+        $modelPupil=new Pupil();
+        $modelPupil->name=$request->input('name');
+        $modelPupil->save();
+        $modelClassPupil=new Classpupil();
+        $modelClassPupil->pupil_id=$modelPupil->id;
+        $modelClassPupil->schoolclass_id=$request->input('school_id');
+        $modelClassPupil->save();
+        return redirect()->route('class.list');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Classpupil  $classpupil
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Classpupil $classpupil)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Classpupil  $classpupil
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Classpupil $classpupil)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Classpupil  $classpupil
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Classpupil $classpupil)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Classpupil  $classpupil
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Classpupil $classpupil)
-    {
-        //
-    }
 }

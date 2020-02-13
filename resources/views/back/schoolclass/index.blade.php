@@ -4,10 +4,14 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                Список классов
                 <a class="btn btn-success"
                    href="{{ route('class.create') }}" role="button">
-                    Добавить
+                    Добавить класс
+                </a>
+
+                <a class="btn btn-success"
+                   href="{{ route('pupilclass.create') }}" role="button">
+                    Добавить ученика
                 </a>
             </div>
             <div class="card-body">

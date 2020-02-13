@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('class.list') }}">Класс</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Создать</li>
+                <li class="breadcrumb-item active" aria-current="page">Редактировать</li>
             </ol>
         </nav>
 
@@ -16,15 +16,17 @@
                 Редактировать класс
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('class.update',['id'=>$data->id]) }}" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text"
+                               name="name"
                                value="{{$data->name}}"
                                class="form-control">
                     </div>
+                    @csrf
                     <button type="submit" class="btn btn-primary">
-                        Создать
+                        Сохранить
                     </button>
                 </form>
             </div>

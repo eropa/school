@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class SchoolPageController extends Controller
 {
+    /**
+     * Главная новость
+     * @param $nameurl
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index($nameurl){
         $dataUrl=School::where('url',$nameurl)->first();
         $option=getOptionsIdScool($dataUrl->id);
@@ -23,6 +28,12 @@ class SchoolPageController extends Controller
                                                 'groupnew'=>$groupnew]);
     }
 
+    /**
+     * Покозать новость
+     * @param $nameurl
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function shownew($nameurl,$id){
         $dataUrl=School::where('url',$nameurl)->first();
         $option=getOptionsIdScool($dataUrl->id);
@@ -33,6 +44,21 @@ class SchoolPageController extends Controller
         }
         return  view('frontsubdomen.part.shownew',['option'=>$option,
             'groupnew'=>$groupnew,
-            'news'=>$datanew]);
+            'news'=>$datanew,'nameurl'=>$nameurl]);
     }
+
+    /**
+     * Выводим все новости
+     * @param $nameurl
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showall($nameurl){
+        $dataUrl=School::where('url',$nameurl)->first();
+        $option=getOptionsIdScool($dataUrl->id);
+        $datanew=Newpost::orderby('id')->get();
+        $groupnew=Groupnew::where('school_id',$dataUrl->id)->get();
+        return  view('frontsubdomen.part.newall',['option'=>$option,'groupnew'=>$groupnew,'news'=>$datanew,'nameurl'=>$nameurl]);
+
+    }
+
 }

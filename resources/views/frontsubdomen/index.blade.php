@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>{{$option['title']}} &mdash; Website by Colorlib</title>
+    <title>{{$option['title']}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -71,11 +71,11 @@
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                             <li class="active">
-                                <a href="index.html" class="nav-link text-left">Главная</a>
+                                <a href="{{ url('/news') }}" class="nav-link text-left">Главная</a>
                             </li>
 
                             <li class="has-children">
-                                <a href="about.html" class="nav-link text-left">Новости</a>
+                                <a href="{{ url('/news') }}" class="nav-link text-left">Новости</a>
                                 <ul class="dropdown">
                                     @foreach($groupnew as $item)
                                         <li><a href="teachers.html">{{$item->name}}</a></li>

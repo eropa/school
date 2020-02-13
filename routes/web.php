@@ -5,6 +5,8 @@ Route::domain('{nameurl}.rybruno.ru')->group(function () {
 
     Route::get('/', 'SchoolPageController@index')->name('schoolfront.index');
     Route::get('/new_{id?}','SchoolPageController@shownew')->name('schoolfront.shownew');
+    Route::get('/news','SchoolPageController@showall')->name('schoolfront.showallnew');
+    Route::get('/gr_{id?}','SchoolPageController@showall')->name('schoolfront.showallnew');
 });
 
 // Главная страница
@@ -101,8 +103,7 @@ Route::middleware(['auth'])->group(function () {
          * Контакты
          */
         Route::get('/contactpage','PagecontactController@edit')->name('pagecontact.edit');
-
-
+        Route::post('/contactpage','PagecontactController@update')->name('pagecontact.update');
 
 
 
@@ -111,12 +112,23 @@ Route::middleware(['auth'])->group(function () {
          */
         Route::get('/class','SchoolclassController@index')->name('class.list');
         Route::get('/class/create','SchoolclassController@create')->name('class.create');
+        Route::post('/class/create','SchoolclassController@story')->name('class.story');
         Route::get('/class/{id?}','SchoolclassController@edit')->name('class.edit');
+        Route::post('/class/{id?}','SchoolclassController@update')->name('class.update');
 
         /**
          * Ученики
          */
+        Route::get('/pupilclass/add','ClasspupilController@create')->name('pupilclass.create');
+        Route::post('/pupilclass/add','ClasspupilController@story')->name('pupilclass.story');
         Route::get('/pupilclass/{id?}','ClasspupilController@index')->name('pupilclass.list');
+
+        /**
+         * Ученик
+         */
+        Route::get('/pupil/{id?}','PupilController@showpupil')->name('pupil.show');
+        Route::post('/pupil/{id?}','PupilController@storygramota')->name('pupil.storygramota');
+        Route::get('/pupil/{id?}/portdelet','PupilController@deleteport')->name('pupil.deleteport');
 
         /**
          * Учителя и закрепления
