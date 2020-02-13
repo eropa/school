@@ -21,11 +21,8 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-9 mb-4">
-                    <p class="mb-5">
-                        <img src="images/course_5.jpg" alt="Image" class="img-fluid">
-                    </p>
-                    {!! $news->textsmallhtml !!}
-                    {!! $news->textsfullhtml !!}
+                    {!! $news->texthtml !!}
+
                 </div>
 
             </div>

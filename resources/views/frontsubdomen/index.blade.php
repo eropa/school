@@ -71,42 +71,71 @@
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                             <li class="active">
-                                <a href="{{ url('/news') }}" class="nav-link text-left">Главная</a>
+                                <a href="{{ url('/') }}" class="nav-link text-left">Главная</a>
                             </li>
 
                             <li class="has-children">
                                 <a href="{{ url('/news') }}" class="nav-link text-left">Новости</a>
                                 <ul class="dropdown">
                                     @foreach($groupnew as $item)
-                                        <li><a href="teachers.html">{{$item->name}}</a></li>
+                                        <li>
+                                            <a href="{{ url('/gr_'.$item->id) }}">
+                                                {{$item->name}}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </li>
 
-                            <li class="has-children">
-                                <a href="about.html" class="nav-link text-left">О школе</a>
-                                <ul class="dropdown">
-                                    <li><a href="teachers.html">Контактная информация</a></li>
-                                    <li><a href="teachers.html">Педагогический коллектив</a></li>
-                                    <li><a href="teachers.html">Правила поведения учащихся</a></li>
-                                    <li><a href="teachers.html">Атрибутика школы</a></li>
-                                    <li><a href="teachers.html">История школы</a></li>
-                                    <li><a href="teachers.html">Школьная документация</a></li>
-                                </ul>
-                            </li>
+                            <?php
+                                $dataUrl=\App\Models\School::where('url',$nameurl)->first();
+
+                                $groups=\App\Models\Grouppage::Where('school_id', $dataUrl->id)->Where('menu',1)->get();
+                            ?>
+
+                            @foreach($groups as $group)
+                            <?php
+                                    $countpage=\App\Models\Page::where('grouppage_id',$group->id)
+                                        ->count();
+
+                                ?>
+
+                                @if($countpage>0)
+
+                                    <li class="has-children">
+                                        <a href="grp_{{$group->id}}" class="nav-link text-left">{{$group->name}}</a>
+                                        <?php
+                                            $pagas=\App\Models\Page::where('grouppage_id',$group->id)
+                                                ->get();
+
+                                        ?>
+                                        <ul class="dropdown">
+                                            @foreach($pagas as $paga)
+                                                <li><a href="{{ url('/page_'.$paga->id) }}">{{$paga->name}}</a></li>
+                                            @endforeach
+
+
+                                        </ul>
+                                    </li>
+
+                                @else
+                                    <li>
+                                        <a href="grp_{{$group->id}}" class="nav-link text-left">{{ $group->name }}</a>
+                                    </li>
+                                @endif
+
+                            @endforeach
+
+
 
                             <li>
-                                <a href="admissions.html" class="nav-link text-left">Наши достижения</a>
-                            </li>
-                            <li>
-                                <a href="contact.html" class="nav-link text-left">Контакты</a>
+                                <a href="{{ url('/contact') }}" class="nav-link text-left">Контакты</a>
                             </li>
                         </ul>                                                                                                                                                                                                                                                                                          </ul>
                     </nav>
 
                 </div>
                 <div class="col-lg-3 text-right">
-                    <a href="login.html" class="small mr-3"><span class="icon-unlock-alt"></span> Вход</a>
+                    <a href="{{ route('login') }}" class="small mr-3"><span class="icon-unlock-alt"></span> Вход</a>
                     <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                                 class="icon-menu h3"></span></a>
                 </div>
@@ -140,17 +169,9 @@
                     <h3 class="footer-heading"><span>Новости</span></h3>
                     <ul class="list-unstyled">
                         @foreach($groupnew as $item)
-                            <li><a href="{{$item->id}}">{{$item->name}}</a></li>
+                            <li>  <a href="{{ url('/gr_'.$item->id) }}">{{$item->name}}</a></li>
                         @endforeach
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h3 class="footer-heading"><span>О школе</span></h3>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Школьная дума</a></li>
-                        <li><a href="#">Наши достижения</a></li>
-                        <li><a href="#">Начальная школа</a></li>
-                        <li><a href="#">Конкурсы и положения</a></li>
+
                     </ul>
                 </div>
             </div>

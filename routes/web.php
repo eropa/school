@@ -6,7 +6,14 @@ Route::domain('{nameurl}.rybruno.ru')->group(function () {
     Route::get('/', 'SchoolPageController@index')->name('schoolfront.index');
     Route::get('/new_{id?}','SchoolPageController@shownew')->name('schoolfront.shownew');
     Route::get('/news','SchoolPageController@showall')->name('schoolfront.showallnew');
-    Route::get('/gr_{id?}','SchoolPageController@showall')->name('schoolfront.showallnew');
+    Route::get('/gr_{id}','SchoolPageController@showgr')->name('schoolfront.showgr');
+    Route::get('/page_{id}','SchoolPageController@showpage')->name('schoolfront.showpage');
+    Route::get('/grp_{id}','SchoolPageController@showgrpage')->name('schoolfront.showgr');
+    Route::get('/contact','SchoolPageController@contactpage')->name('schoolfront.contact');
+
+
+
+    Route::get('/contact','SchoolPageController@contactpage')->name('schoolfront.contactpage');
 });
 
 // Главная страница

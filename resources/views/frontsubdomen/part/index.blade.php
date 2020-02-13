@@ -44,18 +44,18 @@
                 <div class="col-lg-12">
                     <div class="section-heading">
                         <h2 class="text-black">Новости</h2>
-                        <a href="#">Читать все новости</a>
+                        <a href="{{ url('/news') }}">Читать все новости</a>
                     </div>
                     <div class="row">
 
                         <div class="col-lg-6">
                             @if(isset($news[0]))
                                 <div class="post-entry-big">
-                                    <a href="news-single.html" class="img-link">
+                                    <a href="{{ url('new_'.$news[0]->id) }}" class="img-link">
                                         <img src="{{ asset('images/blog_large_1.jpg') }}" alt="Image" class="img-fluid"></a>
                                     <div class="post-content">
                                         <div class="post-meta">
-                                            <a href="#">
+                                            <a href="{{ url('new_'.$news[0]->id) }}">
                                                 @if(is_null($news[0]->created_at))
                                                     June 6, 2019
                                                 @else
@@ -63,10 +63,10 @@
                                                 @endif
                                             </a>
                                             <span class="mx-1">/</span>
-                                            <a href="#">{{$news[0]->group->name}}</a>
+                                            <a href="{{ url('new_'.$news[0]->id) }}">{{$news[0]->group->name}}</a>
                                         </div>
                                         <h3 class="post-heading">
-                                            <a href="news-single.html">
+                                            <a href="{{ url('new_'.$news[0]->id) }}">
                                                 {{$news[0]->name}}
                                             </a>
                                         </h3>
@@ -79,10 +79,10 @@
                         <div class="col-lg-6">
                             @for ($i =1; $i < count($news) ; $i++)
                                 <div class="post-entry-big horizontal d-flex mb-4">
-                                    <a href="news-single.html" class="img-link mr-4"><img src="images/blog_1.jpg" alt="Image" class="img-fluid"></a>
+                                    <a href="{{ url('new_'.$news[$i]->id) }}" class="img-link mr-4"><img src="images/blog_1.jpg" alt="Image" class="img-fluid"></a>
                                     <div class="post-content">
                                         <div class="post-meta">
-                                            <a href="#">
+                                            <a ref="{{ url('new_'.$news[$i]->id) }}">
                                                 @if(is_null($news[$i]->created_at))
                                                     June 6, 2019
                                                 @else
@@ -90,10 +90,10 @@
                                                 @endif
                                             </a>
                                             <span class="mx-1">/</span>
-                                            <a href="#">{{$news[$i]->group->name}}</a>
+                                            <a ref="{{ url('new_'.$news[$i]->id) }}">{{$news[$i]->group->name}}</a>
                                         </div>
                                         <h3 class="post-heading">
-                                            <a href="news-single.html">
+                                            <a href="{{ url('new_'.$news[$i]->id) }}">
                                                 {{$news[$i]->name}}
                                             </a>
                                         </h3>
