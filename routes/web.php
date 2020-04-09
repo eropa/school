@@ -1,7 +1,7 @@
 <?php
 
 
-Route::domain('{nameurl}.rybruno.ru')->group(function () {
+Route::domain('{nameurl}.rfpgu.ru')->group(function () {
 
     Route::get('/', 'SchoolPageController@index')->name('schoolfront.index');
     Route::get('/new_{id?}','SchoolPageController@shownew')->name('schoolfront.shownew');
