@@ -53,7 +53,7 @@
      */
     function getOptionsIdScool($siteID){
         $datas=\App\Models\Option::where('school_id',$siteID)->get();
-        if(is_null($datas))
+        if(count($datas)==0)
             return null;
         $arraOption[][]=array();
         foreach ($datas as $data){
