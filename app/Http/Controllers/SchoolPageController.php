@@ -19,6 +19,8 @@ class SchoolPageController extends Controller
      */
     public function index($nameurl){
         $dataUrl=School::where('url',$nameurl)->first();
+        if(is_null($dataUrl))
+            abort(404);
         $option=getOptionsIdScool($dataUrl->id);
         $groupnew=Groupnew::where('school_id',$dataUrl->id)->get();
         foreach ($groupnew as $item){
