@@ -43,7 +43,7 @@
 
                             <td>
                                 <a target="_blank"
-                                    href="http://{{ $data->url.env('SCHOOLDOMEN','.rybruno.ru:8000') }}">
+                                    href="http://{{ $data->url.env('APP_SCHOOL','.rfpgu.ru') }}">
                                     {{ $data->url }}
                                 </a>
                             </td>
