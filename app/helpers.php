@@ -24,7 +24,8 @@
      */
     function getOptions(){
         $siteID=\Illuminate\Support\Facades\Auth::user()->school->school_id;
-        $datas=\App\Models\Option::where('school_id',$siteID)->get();
+        $datas=\App\Models\Option::where('school_id',$siteID)->first();
+        dump($siteID);
         dd($datas);
         $arraOption[][]=array();
         foreach ($datas as $data){
