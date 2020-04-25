@@ -23,6 +23,7 @@ class SchoolPageController extends Controller
             abort(404);
         $option=getOptionsIdScool($dataUrl->id);
         $groupnew=Groupnew::where('school_id',$dataUrl->id)->get();
+        $groupid=array('0');
         foreach ($groupnew as $item){
             $groupid[]=$item->id;
         }

@@ -63,8 +63,10 @@
             <div class="d-flex align-items-center">
                 <div class="site-logo">
                     <a href="index.html" class="d-block">
+                        @if(isset($option['logo']))
                         <img src="{{ asset('images/'.$option['logo']) }}"
                              alt="Image" class="img-fluid" height="42" width="42">
+                            @endif
                     </a>
                 </div>
                 <div class="mr-auto">
@@ -162,8 +164,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <p class="mb-4"><img src="{{ asset('images/'.$option['logo']) }}" alt="Image" class="img-fluid"></p>
-
+                    @if(isset($option['logo']))
+                        <p class="mb-4">
+                            <img src="{{ asset('images/'.$option['logo']) }}" alt="Image" class="img-fluid"></p>
+                    @endif
                 </div>
                 <div class="col-lg-3">
                     <h3 class="footer-heading"><span>Новости</span></h3>
