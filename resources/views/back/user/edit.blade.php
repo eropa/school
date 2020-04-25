@@ -85,9 +85,11 @@
                                 <option value="0" selected disabled>Выберите школу</option>
                                 @foreach($schools as $school)
                                     <option value="{{$school->id}}"
-                                        @if($data->school->school_id==$school->id)
-                                            selected
-                                        @endif
+                                            @if(!is_null($data->school))
+                                                @if($data->school->school_id==$school->id)
+                                                    selected
+                                                @endif
+                                            @endif
                                     >{{$school->name}}</option>
                                 @endforeach
                             </select>

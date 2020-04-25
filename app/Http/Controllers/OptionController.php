@@ -15,6 +15,18 @@ class OptionController extends Controller
     public function index()
     {
         $option=getOptions();
+        if(!isset($option['phone'])){
+            setOption("phone","");
+            setOption("email","");
+            setOption("title","");
+            setOption("slaid1","");
+            setOption("slaid2","");
+            setOption("slaid3","");
+            $option=getOptions();
+
+        }
+
+
         return view('back.option.edit',['option'=>$option]);
     }
 
