@@ -3,10 +3,6 @@
 
 
 
-// Главная страница
-Route::get('/','PageController@main');
-
-
 
 /**
  * Только авторизированным пользователям
@@ -176,6 +172,10 @@ Route::domain('{nameurl}.rfpgu.ru')->group(function () {
 });
 
 
+
+
+// Главная страница
+Route::get('/','PageController@main');
 
 
 
