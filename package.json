@@ -27,7 +27,7 @@
         "@ckeditor/ckeditor5-build-classic": "^16.0.0",
         "bootstrap-select": "^1.13.12",
         "ckeditor4": "^4.13.1",
-        "datatables.net": "^1.10.20",
+        "datatables.net": "^1.11.3",
         "datatables.net-dt": "^1.10.20"
     }
 }
